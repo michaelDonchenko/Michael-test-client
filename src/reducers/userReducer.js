@@ -9,7 +9,10 @@ import {
 
 //get users
 export const loadUsers = (limit) => ({ type: LOAD_USERS, limit })
-export const usersLoaded = (users) => ({ type: USERS_LOADED, users })
+export const usersLoaded = (usersObject) => ({
+  type: USERS_LOADED,
+  usersObject,
+})
 export const usersFailed = (error) => ({ type: USERS_FAILED, error })
 
 //register a new user
@@ -30,7 +33,7 @@ export const registerError = (registerError) => ({
 
 //initial state
 const initialState = {
-  users: [],
+  usersObject: {},
   loading: false,
   registerResponse: null,
   error: false,
@@ -45,12 +48,12 @@ export default (state = initialState, action) => {
       return { ...state, loading: true }
 
     case USERS_LOADED:
-      const { users } = action
-      return { ...state, users, loading: false }
+      const { usersObject } = action
+      return { ...state, usersObject, loading: false }
 
     case USERS_FAILED:
       const { error } = action
-      return { ...state, users: [], loading: false, error }
+      return { ...state, usersObject: {}, loading: false, error }
 
     //register new user
     case REGISTER_REQUEST:

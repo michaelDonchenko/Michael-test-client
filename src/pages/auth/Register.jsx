@@ -4,12 +4,14 @@ import RegisterForm from '../../components/auth/RegisterForm'
 import styles from '../../styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../../reducers/userReducer'
+import { Alert } from '@material-ui/lab'
 
 const Register = () => {
   const classes = styles()
   const dispatch = useDispatch()
   const state = useSelector((state) => state.user)
-  console.log(state)
+
+  const { registerResponse, registerError } = state
 
   const [values, setValues] = useState({
     username: '',
@@ -28,6 +30,30 @@ const Register = () => {
     dispatch(registerUser(username, email, age))
   }
 
+  const displaySuccess = () => {
+    if (registerResponse && registerResponse.success) {
+      return <Alert severity='success'>{registerResponse.message}</Alert>
+    }
+  }
+
+  const displayError = () => {
+    if (typeof registerError === 'string') {
+      return <Alert severity='error'>{registerError}</Alert>
+    }
+
+    if (typeof registerError === 'object') {
+      return (
+        <Alert severity='error'>
+          <ul>
+            {registerError.map((err) => (
+              <li>{err.msg}</li>
+            ))}
+          </ul>
+        </Alert>
+      )
+    }
+  }
+
   return (
     <Typography component='div' className={classes.flexCentered}>
       <Typography variant='h4' align='center'>
@@ -39,6 +65,9 @@ const Register = () => {
         handleChange={handleChange}
         handleRegister={handleRegister}
       />
+
+      {displaySuccess()}
+      {displayError()}
     </Typography>
   )
 }

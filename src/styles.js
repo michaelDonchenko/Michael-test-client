@@ -68,6 +68,15 @@ const useStyles = makeStyles((theme) => ({
     width: '55%',
     margin: theme.spacing(2, 'auto', 2, 'auto'),
   },
+
+  table: {
+    margin: theme.spacing(0),
+    overflowX: 'auto',
+  },
+
+  title: {
+    flex: '1 1 100%',
+  },
 }))
 
 export default useStyles

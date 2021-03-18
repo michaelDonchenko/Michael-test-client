@@ -1,5 +1,5 @@
 import { Container, Typography, ThemeProvider } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Register from './pages/auth/Register'
@@ -10,6 +10,17 @@ import theme from './theme'
 const App = () => {
   const classes = styles()
 
+  const [width, setWidth] = useState(window.innerWidth)
+
+  const handleWithChange = () => {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWithChange)
+    // return () => window.removeEventListener('resize', handleWithChange)
+  }, [])
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -19,7 +30,7 @@ const App = () => {
 
         <Container className={classes.root}>
           <Typography component='div' className={classes.main}>
-            <Typography variant='h3'>
+            <Typography variant={width > 600 ? 'h4' : 'h6'} align='center'>
               Hello and welcome to my project
             </Typography>
 

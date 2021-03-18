@@ -11,7 +11,7 @@ const Register = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.user)
 
-  const { registerResponse, registerError } = state
+  const { registerResponse, registerError, loading } = state
 
   const [values, setValues] = useState({
     username: '',
@@ -56,7 +56,7 @@ const Register = () => {
 
   return (
     <Typography component='div' className={classes.flexCentered}>
-      <Typography variant='h4' align='center'>
+      <Typography variant='h5' align='center'>
         Register a new user
       </Typography>
 
@@ -64,6 +64,7 @@ const Register = () => {
         values={values}
         handleChange={handleChange}
         handleRegister={handleRegister}
+        loading={loading}
       />
 
       {displaySuccess()}

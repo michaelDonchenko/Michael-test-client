@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '400px',
     margin: theme.spacing(4, 'auto'),
     padding: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
+    width: '70%',
   },
 
   flexCentered: {
@@ -22,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       width: '100%',
     },
     width: '60%',
@@ -72,10 +76,11 @@ const useStyles = makeStyles((theme) => ({
   table: {
     margin: theme.spacing(0),
     overflowX: 'auto',
+    maxWidth: '100%',
   },
 
   title: {
-    flex: '1 1 100%',
+    flex: '1',
   },
 }))
 

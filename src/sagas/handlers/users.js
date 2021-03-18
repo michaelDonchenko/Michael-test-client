@@ -8,8 +8,9 @@ import {
 import { requestGetUsers, requestRegisterUser } from '../requests/users'
 
 export function* handleGetUsers(action) {
+  const { limit, sort, order, page } = action
   try {
-    const { data } = yield call(requestGetUsers, action.limit)
+    const { data } = yield call(requestGetUsers, limit, sort, order, page)
     yield put(usersLoaded(data))
   } catch (error) {
     console.log(error)

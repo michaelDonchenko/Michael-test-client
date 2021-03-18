@@ -9,7 +9,7 @@ import {
 import React from 'react'
 import styles from '../../styles'
 
-const RegisterForm = ({ values, handleChange, handleRegister }) => {
+const RegisterForm = ({ values, handleChange, handleRegister, loading }) => {
   const classes = styles()
   let ages = []
 
@@ -64,8 +64,9 @@ const RegisterForm = ({ values, handleChange, handleRegister }) => {
         variant='contained'
         color='primary'
         className={classes.button}
+        disabled={loading}
       >
-        Add user
+        {loading ? 'Loading..' : 'Add user'}
       </Button>
     </form>
   )

@@ -8,7 +8,13 @@ import {
 } from '../actions/actionTypes'
 
 //get users
-export const loadUsers = (limit) => ({ type: LOAD_USERS, limit })
+export const loadUsers = (limit, sort, order, page) => ({
+  type: LOAD_USERS,
+  limit,
+  sort,
+  order,
+  page,
+})
 export const usersLoaded = (usersObject) => ({
   type: USERS_LOADED,
   usersObject,

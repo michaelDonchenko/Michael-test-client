@@ -6,6 +6,7 @@ import Register from './pages/auth/Register'
 import Users from './pages/user/Users'
 import NavBar from './components/navbar/NavBar'
 import theme from './theme'
+import Home from './pages/home/Home'
 
 const App = () => {
   const classes = styles()
@@ -34,8 +35,9 @@ const App = () => {
             </Typography>
 
             <Switch>
-              <Route path='/register' component={Register} />
-              <Route path='/users' component={Users} />
+              <Route path='/' exact component={Home} />
+              <Route path='/register' exact component={Register} />
+              <Route path='/users' exact component={Users} />
             </Switch>
           </Typography>
         </Container>

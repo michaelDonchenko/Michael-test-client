@@ -57,6 +57,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+    margin: theme.spacing(2, 0),
+    '&:hover': {
+      color: blue[700],
+    },
+  },
+
   textField: {
     [theme.breakpoints.down('sm')]: {
       width: '100%',

@@ -18,7 +18,6 @@ const App = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleWithChange)
-    // return () => window.removeEventListener('resize', handleWithChange)
   }, [])
 
   return (

@@ -77,6 +77,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0),
     overflowX: 'auto',
     maxWidth: '100%',
+    height: 400,
+    width: '100%',
   },
 
   title: {
